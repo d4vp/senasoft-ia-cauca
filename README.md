@@ -20,3 +20,14 @@ son personas, patos o perros.
 1. Usamos angular para crear la interefaz web.
 
 2. Usamos css para añadirle estilos.
+
+## Recursos audiovisuales usados
+
+Para el entrenamiento de la ia usada para dar respuesta al usuario
+se usaron los siguientes recursos.
+
+### Visuales
+
+1. Pexels: Plataforma en linea que brinda imagenes libres de derechos de autor para poder usarlas en
+aplicaciones sin animo de lucro 
+Enlace { https://www.pexels.com/es-es/ }
