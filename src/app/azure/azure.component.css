@@ -1,0 +1,41 @@
+.body{
+    display: grid;
+    grid-template-columns: repeat(6, fr2);
+    grid-template-rows: auto;
+}
+.tilte,
+.content{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+}
+
+.cont-rigth,
+.cont-left{
+    border-color: #000;
+    border: 2px solid;
+}
+
+.cont-rigth{
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.cont-left{
+    grid-column-start: 3;
+    grid-column-end: 6;
+}
+
+.circulo {
+    position: relative;
+    border-radius: 50%;
+    border-color: #000;
+    border-style: dashed;
+    height: 400px;
+    width: 400px;
+}
+
+form button{
+    background: #000;
+    font-size: 12px;
+    color: #fff;
+    border-radius: 5px;
+}
