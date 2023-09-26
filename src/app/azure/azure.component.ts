@@ -12,8 +12,13 @@ export class AzureComponent {
 
   selectedFile: File | null = null;
   imageSelected = false;
+  sena:string;
+  soft:string;
 
-  constructor(private azureService: AzureService) {}
+  constructor(private azureService: AzureService) {
+    this.sena = "SENA";
+    this.soft = "Soft"
+  }
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
