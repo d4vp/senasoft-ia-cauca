@@ -19,9 +19,20 @@
     </div>
     
     <div class="cont-left">
-        <div id="resultado"></div>
-    </div>
+        <div class="title">
+          <div>
+            <h2>SENASOFT - INTELIGENCIA ARTIFICIAL</h2>
+          </div>
+        </div>
+        <div class="content">
+          <div *ngIf="imageSelected">
+            <img [src]="selectedFile ? selectedFile : ''" alt="Imagen seleccionada">
+          </div>
+          <div id="resultado" style="color:#fff"></div>
+        </div>
+      </div>
 </div>
+
 
 
     
