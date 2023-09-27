@@ -15,13 +15,16 @@
 .cont-left {
     grid-column-start: 1;
     grid-column-end: 4;
+
+    display: flex;
 }
-.cont-rigth{
+
+.cont-rigth {
     grid-column-start: -4;
     grid-column-end: -1;
 }
 
-.title h2{
+.title h2 {
     width: 100%;
 
     font-size: 2rem;
@@ -32,25 +35,72 @@
     background-color: var(--gris-oscuro);
 }
 
-.logo{
+.logo {
     display: flex;
     justify-content: flex-end;
     gap: 3px;
 }
 
-.sena{
+.sena {
     font-weight: bold;
     color: white;
 }
-.sena::before{
+
+.sena::before {
     content: "< ";
     color: var(--verde);
 }
-.soft{
-    color:var(--verde);
+
+.soft {
+    color: var(--verde);
 }
 
-.soft::after{
-    content:" >";
+.soft::after {
+    content: " >";
     color: var(--verde);
+}
+
+.send {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    background-color: green;
+    border-radius: 100%;
+    border: none;
+}
+
+.send span{
+    margin:auto;
+    margin-left: 6px;
+    color: white;
+}
+
+.content form{
+    display: flex;
+    gap: 10px;
+}
+
+.content form > label {
+    padding: 5px 10px;
+    font-size: 1.5rem;
+
+    background-color: green;
+
+    border-radius: 5px;
+}
+
+.content form>input[type="file"]{
+    display: none;
+}
+
+.send:hover{
+    background-color: white;
+}
+
+.send span{
+    color: var(--gris-oscuro);
 }
