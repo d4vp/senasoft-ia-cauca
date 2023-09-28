@@ -131,6 +131,8 @@ Se le debe pasar un xml con la siguiente estructura
 
 4. [Docs microsoft](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/rest-text-to-speech?tabs=streaming#authentication)
 
+5. [Voces disponibles](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-support?tabs=tts)
+
 ### Reconocimiento de rostros
 
 1. Headers:
@@ -168,5 +170,3 @@ Se le debe pasar un xml con la siguiente estructura
     imagen en binario.
 
 3. [Endpoint](https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/455efc17-7aa0-4e3f-a23f-b40f44da2b14/detect/iterations/Iteration2/image)
-
-

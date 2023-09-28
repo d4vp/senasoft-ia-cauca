@@ -1,0 +1,23 @@
+label {
+    padding: 5px;
+
+    font-size: 1rem;
+    color: white;
+
+    background-color: green;
+}
+
+label:hover {
+    color: gray;
+    background-color: greenyellow;
+}
+
+label:active {
+    color: white;
+    background-color: green;
+}
+
+
+/* input {
+    display: none;
+} */
