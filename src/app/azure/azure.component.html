@@ -1,38 +1,83 @@
-<div class="cont-left">
-  <div class="title">
-    <h2>
-      <div class="logo">
-        <div class="sena">{{sena}}</div> / <div class="soft">{{soft}}</div>
+<div class="container">
+  <div class="row">
+    <div class="title text-center">
+      <div>
+        <h2>SENASOFT - INTELIGENCIA ARTIFICIAL</h2>
       </div>
-    </h2>
-  </div>
-  <div class="content">
-    <form action="" name="azure-imagen" id="azure-imagen" (ngSubmit)="onSubmit()">
-
-      <label for="img">SUBIR IMAGEN
-      </label>
-      <input accept="image/png,image/jpeg" type="file" name="img" id="img" (change)="onFileSelected($event)">
-
-      <button type="submit" class="send">
-        <span class="material-symbols-outlined">
-          send
-        </span>
-      </button>
-
-    </form>
-  </div>
-</div>
-
-<div class="cont-rigt">
-  <div class="title">
-    <div>
-      <h2>SENASOFT - INTELIGENCIA ARTIFICIAL</h2>
     </div>
-  </div>
-  <div class="content">
-    <div *ngIf="imageSelected">
-      <img [src]="selectedFile ? selectedFile : ''" alt="Imagen seleccionada">
+    <div class="col-6 p-3">
+      <div>
+        <div>
+          <h3>Tu imagen es: <span (ngModel)="resultado"></span></h3>
+          <p></p>
+
+          <form action="" name="azure-imagen" id="azure-imagen" (ngSubmit)="onSubmit()">
+    
+            <label for="img">Ingrese su imagen:</label>
+            <input accept="image/png,image/jpeg" type="file" name="img" id="img" (change)="onFileSelected($event)">
+            <br><br>
+    
+            <button class="btn btn-primary" type="submit">Enviar</button>
+
+          </form>
+
+          <form action="" (ngSubmit)="onSubmitUrl()">
+    
+            <label for="url">Ingrese la URL de la imagen:</label>
+            <input type="text" name="url" id="url">
+            <br><br>
+    
+            <button class="btn btn-primary" type="submit">Enviar</button>
+
+          </form>
+
+          <div class="prediction-result">
+            <h2>Resultado de la Clasificación:</h2>
+            <p>{{ predictionResult }}</p>
+          </div>
+        </div>
+        
+      </div>
     </div>
-    <div id="resultado" style="color:#fff"></div>
+    <div class="col-6 p-3">
+      <div>
+        <div>
+            <div id="resultado" style="color:#000"></div>
+            <div>
+              <h4>Traductor</h4>
+              <form (ngSubmit)="traductorTexto()">
+                <div class="form-group">
+                  <label for="textoTraducir">Texto a Traducir:</label>
+                  <input type="text" id="textoTraducir" [(ngModel)]="textoTraducir" name="textoTraducir" class="form-control" required disabled>
+                </div>
+                <div class="form-group">
+                  <label for="lenguajeSeleccionado"></label>
+                  <select id="lenguajeSeleccionado" [(ngModel)]="lenguajeSeleccionado" name="lenguajeSeleccionado" class="form-control" required>
+                    <option value="" selected>Seleccione un Idioma</option>
+                    <option value="af">Afrikáans</option>
+                    <option value="es">Español</option>
+                    <option value="en">Inglés</option>
+                    <option value="fr">Frances</option>
+                    <option value="de">Aleman</option>
+                    <option value="gn">Guarani</option>
+                    <option value="id">Indoneso</option>
+                    <option value="la">Latin</option>
+                    <option value="ja">Japones</option>
+                    <option value="ko">Coreano</option>
+                    <option value="it">Italiano</option>
+                  </select>
+                </div><br>
+                <button type="submit" class="btn btn-primary">Traducir</button>
+              </form>
+              <div class="translation-result">
+                <h2>Resultado de la Traducción:</h2>
+                <p>{{ resultadoTraductor }}</p>
+              </div>
+            </div>
+          
+  
+        </div>
+      </div>
+    </div>
   </div>
 </div>

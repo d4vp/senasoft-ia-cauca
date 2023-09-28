@@ -1,34 +1,40 @@
 import { Component } from '@angular/core';
 import { AzureService } from '../azure.service';
-import { FormBuilder } from '@angular/forms';
-import { AzureModel } from '../azureImagen.model';
-import { HttpClient } from '@angular/common/http';
+import { TranslateService } from '../translate.service';
 
 @Component({
   selector: 'app-azure',
   templateUrl: './azure.component.html',
   styleUrls: ['./azure.component.css']
 })
+
 export class AzureComponent {
 
-  selectedFile: File | null = null;
-  imageSelected = false;
-  tag: string = "";
-  sena:string;
-  soft:string;
+  // Variables Imagenes
+  selectedFile: File | null = null; // Almacenar el archivo adjuntado
+  imageUrl = ''; // Almacenar la URL escrita
+  predictionResult = '';
 
-  constructor(private azureService: AzureService) {
-    this.sena = "SENA";
-    this.soft = "Soft"
-  }
+  resultado = '';
+
+  // Variables traductor
+  textoTraducir = '';
+  lenguajeSeleccionado = '';
+  resultadoTraductor = '';
+
+  constructor(
+    private azureService: AzureService,
+    private translateService: TranslateService,
+
+  ) {}
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     if (file) {
       this.selectedFile = file;
-      this.imageSelected = true;
     }
   }
+
 
   onSubmit() {
     if (this.selectedFile) {
@@ -49,18 +55,13 @@ export class AzureComponent {
             const limit = 0.9;
 
             if (probability > limit) {
-              var porcentaje = probability * 100;
-            }
-
-            const resultadoElement = document.getElementById('resultado');
-
-            if (resultadoElement) {
-              resultadoElement.textContent = `La imagen contiene ${tag}`;
+              console.log('la imagen coincide con: ')
+            } else {
+              console.log('No hay coincidencias con nuestras imagenes')
             }
           }
 
           console.log(response);
-
           
         },
         (error) => {
@@ -69,8 +70,27 @@ export class AzureComponent {
       );
     }
   }
+
+  onSubmitUrl() {
+    
+  }
+  
+
+  traductorTexto() {
+    if (this.lenguajeSeleccionado && this.textoTraducir) {
+      this.translateService
+        .traductorTexto(this.textoTraducir, this.lenguajeSeleccionado)
+        .then((response) => {
+          this.resultadoTraductor = response.data[0].translations[0].text;
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }
+  
 }
 
 
   
-
