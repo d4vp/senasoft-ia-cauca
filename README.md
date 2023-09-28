@@ -11,6 +11,8 @@ Este proyecto se desarrollo con la finalida de competir en senasoft 2023.
 
 * Visual estudio code
 * THUNDER CLIENT (extencion de visual estudio)
+* [Microsoft azure](https://portal.azure.com/#home)
+* [Bootstrap4](https://getbootstrap.com/)
 
 ## Requerimientos
 
@@ -29,7 +31,8 @@ son personas, patos o perros.
 
 #### Modulo 2
 1. Crear un modulo que permita subir 3 fotos de personas.
-4. Debemos conectar el servicio de custon vision al de reconocimiento de rostros.
+2. Debemos conectar el servicio de custon vision al de reconocimiento de rostros.
+3. debemos implementar la funcionalidad para identificar objetos, y de esta forma en una misma foto identificar los perros patos o personas.
 
 ### No funcionales.
 
@@ -139,4 +142,31 @@ Se le debe pasar un xml con la siguiente estructura
         "url":"url de la imagen"
     }`
 3. [Endpoint](https://senasoft-cauca-faceapi.cognitiveservices.azure.com/face/v1.0/detect?detectionModel=detection_01)
+
+### Reconocimiento de objetos
+
+#### Image url
+
+1. Headers:
+    * Prediction-Key: 965da2919fd14e49bd4754ed0082060a
+    * Content-Type: application/json
+
+2. Body:
+    `{
+        "url":"url de la imagen"
+    }`
+
+3. [Endpoint](https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/455efc17-7aa0-4e3f-a23f-b40f44da2b14/detect/iterations/Iteration2/url)
+
+#### Imagen en binario
+
+1. Headers:
+    * Prediction-key: 965da2919fd14e49bd4754ed0082060a
+    * Content-Type: image/jpg
+
+2. Body:
+    imagen en binario.
+
+3. [Endpoint](https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/455efc17-7aa0-4e3f-a23f-b40f44da2b14/detect/iterations/Iteration2/image)
+
 
