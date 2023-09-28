@@ -47,6 +47,8 @@ export class AzureService {
 
 
   private endpoint = 'https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/fb27bfd7-e62a-4e10-9bf0-b39b8cd797f8/classify/iterations/ppp-v1/image';
+  private endpointUrl = 'https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/fb27bfd7-e62a-4e10-9bf0-b39b8cd797f8/classify/iterations/ppp-v1/url';
+  private predictionKey = '965da2919fd14e49bd4754ed0082060a';
 
   constructor(private http: HttpClient) {}
 
@@ -65,70 +67,19 @@ export class AzureService {
 
     return this.http.post(this.endpoint, imageData, { headers });
   }
-  
 
-  // clasificarUrl(text: string) {
+  postUrl(text: string) {
+    const headers = {
+      'Prediction-Key':this.predictionKey,
+      'Content-Type': 'application/json'
+    };
 
-  //   const headers = {
-  //     'Prediction-Key': this.apiKey,
-  //     'Content-Type': 'application/json',
-  //   };
+    const data = {
+        Url: text,
+    };
 
-  //   const data = [
-  //     {
-  //       url: text,
-  //     },
-  //   ];
+    return axios.post(this.endpointUrl, data, {headers})
+  }
 
-  //   return axios.post(`${this.endpointUrl}`, data, {headers});
-  // }
-
-
-
-
-  // clasificarImgUrll(imageUrl: string) {
-  //   const headers = new HttpHeaders({
-  //     'Prediction-Key': this.predictionKey,
-  //     'Content-Type': 'application/json',
-  //   });
-
-  //   const body = {
-  //     url: imageUrl,
-  //   };
-
-  //   return this.http.post(`${this.predictionUrl}/url`, body, { headers });
-  // }
-
-  // setEndpoint(endpoint: string) {
-  //   this.endpoint = endpoint;
-  // }
-
-  // postImage(imageData: FormData): Observable<any> {
-  //   if (!this.endpoint) {
-  //     throw new Error('El endpoint no ha sido configurado. Utiliza setEndpoint() para establecerlo.');
-  //   }
-
-  //   const headers = new HttpHeaders({
-  //     'Prediction-Key': '965da2919fd14e49bd4754ed0082060a',
-  //   });
-
-  //   return this.http.post(this.endpoint, imageData, { headers });
-  // }
-
-  // setEndpointUrl(endpointUrl: string) {
-  //   this.endpointUrl = endpointUrl;
-  // }
-
-  // postUrl(urlData: FormData): Observable<any> {
-  //   if (!this.endpointUrl) {
-  //     throw new Error('El endpoint no ha sido configurado. Utiliza setEndpointUrl() para establecerlo.');
-  //   }
-
-  //   const headers = new HttpHeaders({
-  //     'Prediction-Key': '965da2919fd14e49bd4754ed0082060a',
-  //   });
-
-  //   return this.http.post(this.endpointUrl, urlData, { headers });
-  // }
 }
 
