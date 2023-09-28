@@ -8,75 +8,86 @@
     <div class="col-6 p-3">
       <div>
         <div>
-          <h3>Tu imagen es: <span (ngModel)="resultado"></span></h3>
+          <h3>Tu imagen es: <span style="color: rgb(150, 5, 12); box-shadow: 0 3px;">{{ resultadoImagen }}</span></h3>
           <p></p>
 
           <form action="" name="azure-imagen" id="azure-imagen" (ngSubmit)="onSubmit()">
     
-            <label for="img">Ingrese su imagen:</label>
+            <label for="img">Adjuntar Imagen</label><br>
             <input accept="image/png,image/jpeg" type="file" name="img" id="img" (change)="onFileSelected($event)">
             <br><br>
     
             <button class="btn btn-primary" type="submit">Enviar</button>
 
           </form>
-
+          <br><br>
           <form action="" (ngSubmit)="onSubmitUrl()">
     
-            <label for="url">Ingrese la URL de la imagen:</label>
-            <input type="text" name="url" id="url">
-            <br><br>
-    
+            <div class="form-group">
+              <label for="imageUrl">Ingresar URL</label><br>
+              <input type="text" name="imageUrl" id="imageUrl" [(ngModel)]="imageUrl" class="form-control">
+            </div>
+            <br>
+
             <button class="btn btn-primary" type="submit">Enviar</button>
 
           </form>
-
-          <div class="prediction-result">
-            <h2>Resultado de la Clasificación:</h2>
-            <p>{{ predictionResult }}</p>
-          </div>
         </div>
-        
       </div>
     </div>
     <div class="col-6 p-3">
       <div>
-        <div>
-            <div id="resultado" style="color:#000"></div>
-            <div>
-              <h4>Traductor</h4>
-              <form (ngSubmit)="traductorTexto()">
-                <div class="form-group">
-                  <label for="textoTraducir">Texto a Traducir:</label>
-                  <input type="text" id="textoTraducir" [(ngModel)]="textoTraducir" name="textoTraducir" class="form-control" required disabled>
-                </div>
-                <div class="form-group">
-                  <label for="lenguajeSeleccionado"></label>
-                  <select id="lenguajeSeleccionado" [(ngModel)]="lenguajeSeleccionado" name="lenguajeSeleccionado" class="form-control" required>
-                    <option value="" selected>Seleccione un Idioma</option>
-                    <option value="af">Afrikáans</option>
-                    <option value="es">Español</option>
-                    <option value="en">Inglés</option>
-                    <option value="fr">Frances</option>
-                    <option value="de">Aleman</option>
-                    <option value="gn">Guarani</option>
-                    <option value="id">Indoneso</option>
-                    <option value="la">Latin</option>
-                    <option value="ja">Japones</option>
-                    <option value="ko">Coreano</option>
-                    <option value="it">Italiano</option>
-                  </select>
-                </div><br>
-                <button type="submit" class="btn btn-primary">Traducir</button>
-              </form>
-              <div class="translation-result">
-                <h2>Resultado de la Traducción:</h2>
-                <p>{{ resultadoTraductor }}</p>
-              </div>
+          <h4>Traductor</h4>
+          <form (ngSubmit)="traductorTexto()">
+            <div class="form-group">
+              <label for="textoTraducir">Texto a Traducir:</label>
+              <input type="text" id="textoTraducir" [(ngModel)]="textoTraducir" name="textoTraducir" class="form-control" [(ngModel)]="resultadoImagen" required>
             </div>
-          
-  
-        </div>
+            <div class="form-group">
+              <label for="lenguajeSeleccionado"></label>
+              <select id="lenguajeSeleccionado" [(ngModel)]="lenguajeSeleccionado" name="lenguajeSeleccionado" class="form-control" required>
+                <option value="" selected>Seleccione un Idioma</option>
+                <option value="en">Inglés</option>
+                <option value="fr">Frances</option>
+                <option value="pt">Portugues</option>
+                <option value="it">Italiano</option>
+                <option value="af">Afrikáans</option>
+                <option value="de">Aleman</option>
+                <option value="ja">Japones</option>
+                <option value="ko">Coreano</option>
+                <option value="id">Indoneso</option>
+              </select>
+            </div><br>
+            <button type="submit" class="btn btn-primary">Traducir</button>
+          </form>
+          <div class="translation-result">
+            <p>Resultado: <span>{{ resultadoTraductor }}</span></p>
+          </div>
+      </div>
+      <div>
+        <!-- <audio controls *ngIf="audioBlob">
+          <source [src]="audioUrl" type="audio/mpeg">
+          Tu navegador no admite la reproducción de audio.
+        </audio> -->
+        <div>
+          <div class="form-group">
+            <label for="lenguajeVozSeleccionado">Seleccionar el idioma de voz:</label>
+            <select id="lenguajeVozSeleccionado" [(ngModel)]="lenguajeVozSeleccionado" name="lenguajeVozSeleccionado" class="form-control" required>
+              <option value="" selected>Seleccione un Idioma</option>
+              <option value="en-US">Inglés</option>
+              <option value="fr-BE">Frances</option>
+              <option value="pt-BR">Portugues</option>
+              <option value="it-IT">Italiano</option>
+              <option value="af-ZA">Afrikáans</option>
+              <option value="de-DE">Aleman</option>
+              <option value="ja-JP">Japones</option>
+              <option value="ko-KR">Coreano</option>
+              <option value="id-ID">Indoneso</option>
+            </select>
+          </div>
+          <span style="font-size: 10px;">Procura usar el mismo del traductor*</span><br>
+          <button class="btn btn-primary" (click)="textoVoz()">Generar</button>
+        </div>       
       </div>
     </div>
   </div>
