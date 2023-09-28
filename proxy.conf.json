@@ -1,0 +1,8 @@
+{
+    "/translate/*": {
+      "target": "https://api.cognitive.microsofttranslator.com",
+      "secure": false,
+      "logLevel": "debug"
+    }
+  }
+  
