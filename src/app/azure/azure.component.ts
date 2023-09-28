@@ -75,7 +75,7 @@ export class AzureComponent {
           } else {
             this.resultadoImagen = "Imagen no coincide con perro, pato o persona";
           }
-
+          this.selectedFile = null;
           console.log(response.predictions);
         },
         (error) => {
@@ -100,7 +100,9 @@ export class AzureComponent {
           } else {
             this.resultadoImagen = "Imagen no coincide con perro, pato o persona";
           }
-
+          // Limpiar el formulario después de completar la operación
+          
+          this.imageUrl=null
         console.log(response.data);
        })
        .catch((error) => {
