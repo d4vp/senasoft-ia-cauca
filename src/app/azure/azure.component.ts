@@ -44,7 +44,16 @@ export class AzureComponent {
     const file: File = event.target.files[0];
     if (file) {
       this.selectedFile = file;
+      this.showImagePreview(file);
     }
+  }
+
+  showImagePreview(file: File) {
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.imageUrl = e.target.result;
+    };
+    reader.readAsDataURL(file);
   }
 
   // Funcion para adjuntar imagen
@@ -189,6 +198,31 @@ export class AzureComponent {
       console.error('Error al convertir texto a audio:', error);
     });
   }
+
+
+  // selectedFile: File | null = null;
+  // imageUrl: string | null = null;
+
+  // onFileSelected(event: any) {
+  //   const file: File = event.target.files[0];
+  //   if (file) {
+  //     this.selectedFile = file;
+  //     this.showImagePreview(file);
+  //   }
+  // }
+
+  // showImagePreview(file: File) {
+  //   const reader = new FileReader();
+  //   reader.onload = (e: any) => {
+  //     this.imageUrl = e.target.result;
+  //   };
+  //   reader.readAsDataURL(file);
+  // }
+
+  // onSubmit() {
+  //   // Aquí puedes enviar la imagen al servidor si es necesario
+  // }
+// }
 
   
 }

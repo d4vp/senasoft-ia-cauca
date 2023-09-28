@@ -8,18 +8,23 @@
     <div class="col-6 p-3">
       <div>
         <div>
-          <h3>Tu imagen es: <span style="color: rgb(150, 5, 12); box-shadow: 0 3px;">{{ resultadoImagen }}</span></h3>
+          <h3>Tu imagen es: <span style="font-style: italic; text-shadow: 0 -3px 0.5px rgb(5, 2, 43); color: rgba(0, 255, 0, 0.5);"> {{ resultadoImagen }}</span></h3>
           <p></p>
 
           <form action="" name="azure-imagen" id="azure-imagen" (ngSubmit)="onSubmit()">
-    
             <label for="img">Adjuntar Imagen</label><br>
             <input accept="image/png,image/jpeg" type="file" name="img" id="img" (change)="onFileSelected($event)">
             <br><br>
-    
+          
+            <!-- Mostrar la imagen seleccionada -->
+            <div *ngIf="imageUrl">
+              <img [src]="imageUrl" alt="Imagen seleccionada" width="200px" height="200px">
+            </div>
+          
             <button class="btn btn-primary" type="submit">Enviar</button>
-
           </form>
+          
+
           <br><br>
           <form action="" (ngSubmit)="onSubmitUrl()">
     
@@ -61,7 +66,7 @@
             <button type="submit" class="btn btn-primary">Traducir</button>
           </form>
           <div class="translation-result">
-            <p>Resultado: <span>{{ resultadoTraductor }}</span></p>
+            <p>Resultado: <span style="font-style: italic; text-shadow: 0 -3px 0.5px rgb(5, 2, 43); color: rgba(0, 255, 0, 0.5);"> {{ resultadoTraductor }}</span></p>
           </div>
       </div>
       <div>
@@ -85,7 +90,7 @@
               <option value="id-ID">Indoneso</option>
             </select>
           </div>
-          <span style="font-size: 10px;">Procura usar el mismo del traductor*</span><br>
+          <span style="font-size: 10px; color: rgb(212, 23, 23);">Procura usar el lenguaje que usaste en el traductor*</span><br>
           <button class="btn btn-primary" (click)="textoVoz()">Generar</button>
         </div>       
       </div>
