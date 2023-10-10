@@ -11,6 +11,10 @@
       "prefix": "app",
       "architect": {
         "build": {
+           "target": "gh-pages"
+            "deployment": {
+              "target": "my-custom-directory"
+            },
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/senasoft-ia-cauca",
